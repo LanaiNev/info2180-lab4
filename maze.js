@@ -1,29 +1,34 @@
 var mazebound;
 var start;
 var end;
+var state;
 var checkstart = false;
 var win = true;
 
 window.onload = function () {
 	mazebound = document.querySelectorAll(".boundary"); //Collects all .boundary CSS Selectors
+	state = document.getElementById("status");			//Collects all HTML status
 	
-	start = document.getElementById("start");
+	
+	start = document.getElementById("start");			//Collects all HTML start
 	checkstart = false;
-	end = document.getElementById("end");
+	end = document.getElementById("end");				//Collects all HTML end
 
 	for (var i = 0; i < mazebound.length - 1; i++) {
 		mazebound[i].onmouseover = mouseOver;
 	}
 	
-	start.onmouseover = Starter;
-	start.onclick = newGame;
-	end.onmouseover = WinCheck;
+	start.onmouseover = Starter;						//Checks if user hovered over the Start Button
+	start.onclick = newGame;							//Click to reset the game
+	end.onmouseover = WinCheck;							//Checks if user hovered over the End Button
 }
 
-function mouseOver() {	
+function mouseOver() {
 	win = false;
+	state.innerText = 'You Lose :( Click the "S" to restart';	
+	
 	for (var i = 0; i < mazebound.length - 1; i++) {
-		mazebound[i].className += " youlose";
+		mazebound[i].className += " youlose";			//Changes wall colour
 	}	
 }
 
@@ -35,13 +40,14 @@ function Starter(){
 function WinCheck(){
 	if (win){
 		if(checkstart && mouseOver) { 
-			alert ('You Win :D');	
+			state.innerText = 'You Win :D      Click "S" to restart.';		
 		}
 	}
 }
 
 function newGame(){
-	win = true;	
+	win = true;
+	state.innerText = 'New Game :)';			
 	for (var i = 0; i < mazebound.length - 1; i++) {
 		mazebound[i].className = "boundary";
 	}
