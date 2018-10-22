@@ -16,6 +16,7 @@ window.onload = function () {
 	}
 	
 	start.onmouseover = Starter;
+	start.onclick = newGame;
 	end.onmouseover = WinCheck;
 }
 
@@ -36,6 +37,13 @@ function WinCheck(){
 		if(checkstart && mouseOver) { 
 			alert ('You Win :D');	
 		}
+	}
+}
+
+function newGame(){
+	win = true;	
+	for (var i = 0; i < mazebound.length - 1; i++) {
+		mazebound[i].className = "boundary";
 	}
 }
 
