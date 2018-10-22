@@ -1,29 +1,17 @@
-var top_left;
-var boundaries;
-var all_boundaries;
+var mazebound;
 
 window.onload = function () {
-	top_left = document.getElementById("boundary1");
-	boundaries = document.getElementsByClassName("boundary");
+	mazebound = document.querySelectorAll(".boundary"); //Collects all .boundary CSS Selectors
 	
-	 
-	top_left.onmouseover = function() {mouseOver_topleft}
-	boundaries[0].onmouseover = function() {mouseOver(0)}
-	boundaries[1].onmouseover = function() {mouseOver(1)}
-	boundaries[2].onmouseover = function() {mouseOver(2)}
-	boundaries[3].onmouseover = function() {mouseOver(3)}
-	boundaries[4].onmouseover = function() {mouseOver(4)}
-
+	for (var i = 0; i < mazebound.length - 1; i++) {
+		mazebound[i].onmouseover = mouseOver;
+	}
 	
 }
 
-
-
-function mouseOver_topleft() {
-	top_left.className += " youlose";	
-}
-
-function mouseOver(index) {
-	boundaries[index].className += " youlose";	
+function mouseOver() {
+	for (var i = 0; i < mazebound.length - 1; i++) {
+		mazebound[i].className += " youlose";
+	}	
 }
 
